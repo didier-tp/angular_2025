@@ -1,0 +1,11 @@
+<div class="my-card">
+    <h4 class="my-card-header my-bg-primary">
+       <a class="my-text-light" (click)="toggleP = !toggleP" >
+     <span class="my-icon" [style.display]="toggleP?'none':'inline-block'">+</span>
+    <span class="my-icon" [style.display]="toggleP?'inline-block':'none'">-</span>{{title()}}
+      </a>
+  </h4>
+  <div class="my-card-body my-collapse" [class.my-show]="toggleP"> 		       
+   <ng-content></ng-content> <!-- remplacé par le contenu imbriqué -->
+  </div>
+</div>

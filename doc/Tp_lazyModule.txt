@@ -1,0 +1,42 @@
+Ce Tp facultatif (à faire en fin de formation selon le temps disponible)
+s'effectue normalement après avoir coder préalablement le composant reservation (Tp facultatif model_driven/reactive form)
+étant donner que la partie "reservation" est indépendante des autres parties développées , on peut facilement
+déplacer cette partie dans un nouveau module "m2" . 
+-----------------
+
+ng g module m2    pour créer un nouveau module m2
+déplacer m2 de src/app vers scr pour avoir app et m2 cote à cote
+déplacer le répertoire reservation (avec ses 4 fichiers) de src/app vers src/m2
+créer le sous répertoire common/data dans m2 ---> src/m2/common/data
+déplacer reservation.ts de src/app/common/data vers src/m2/common/data
+enveler ou mettre en commentaire ReservationComponent dans app.module.ts et app-routing.module.ts
+ajouter ReservationComponent dans la partie déclaration de m2.module.ts
+ajouter FormsModule, ReactiveFormsModule dans la partie imports de m2.module.ts
+se placer dans src/m2 et lancer la commande ng g c p2 pour générer un composant p2 (point d'entrée de la partie 2)
+ajouter <a routerLink='../reservation'> reservation </a> &nbsp;  au sein de src/m2/p2/p2.component.html
+créer src/m2/m2-routing.module comme une copie très adaptée de src/app/app-routing.module.ts:
+-----------------------------
+import { ReservationComponent } from './reservation/reservation.component';
+import { P2Component } from './p2/p2.component';
+
+const routes: Routes = [
+  { path: 'p2', component: P2Component },
+  { path: '', redirectTo: 'p2', pathMatch: 'prefix'},
+  { path: 'reservation', component: ReservationComponent },
+  ];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class M2RoutingModule { }
+------------------------------------------------
+
+ajouter M2RoutingModule dans la partie imports de m2.module.ts
+-----------
+ajouter { path: 'ngr-m2', loadChildren: () => import('../m2/m2.module').then(m => m.M2Module)},
+au sein de src/app/app-routing.module.ts
+
+ajuster <a routerLink='/ngr-m2'> module2 (lazy loading)</a> &nbsp;  au sein de src/app/header/header.component.html
+--------------
+tester le tout en relancant si besoin ng serve

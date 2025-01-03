@@ -1,0 +1,41 @@
+<p>login</p>
+
+<form #formLogin="ngForm">
+
+    <div class="form-group row">
+        <label class="col-sm-3">username:</label>
+        <div class="col-sm-9">
+            <input [(ngModel)]="login.username" class="form-control" name="username" required pattern="^[a-zA-Z].+"
+                #usernameCtrl="ngModel" />
+            <!-- <span [hidden]="usernameCtrl.valid">le username doit commencer par une lettre et être suivi d'au moins un autre caractère</span> -->
+            <!-- <span [hidden]="usernameCtrl.valid">{{usernameCtrl.errors | json}}</span> -->
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3">password:</label>
+        <div class="col-sm-9">
+            <input [(ngModel)]="login.password" class="form-control" name="password" required minlength="3" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3">roles:</label>
+        <div class="col-sm-9">
+            <input [(ngModel)]="login.roles" class="form-control" name="roles" required />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-9 offset-3">
+            <button (click)="onLogin()" class="btn btn-primary" [disabled]="!formLogin.form.valid">submit/login
+                <span class="badge badge-primary">
+                    <i class="bi bi-person"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<span [style.color]="status?'green':'red'">{{message}}</span>
+<br/>

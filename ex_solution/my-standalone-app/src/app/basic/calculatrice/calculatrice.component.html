@@ -1,0 +1,27 @@
+<p>calculatrice</p>
+<div class="c1">
+<label>a:</label> <input type="number" name="a" required [(ngModel)]="a" 
+                   #aCtrl="ngModel"/> 
+                   <div [hidden]="aCtrl.valid">{{aCtrl.errors | json}}</div>
+                   <br/>
+<label>b:</label> <input type="number" name="b" required [(ngModel)]="b" /> <br/>
+<button (click)="onCalculer('+')">+</button> &nbsp;
+<button (click)="onCalculer('-')">-</button> &nbsp;
+@if(modeChoisi=="sophistiquee"){
+   <button (click)="onCalculer('*')">*</button> &nbsp;
+   <button (click)="onCalculer('/')">/</button>
+ } <br/>
+res= <span id="spanRes" [style.font-weight]="res>0?'bold':'normal'"
+           [class.negatif]="res<0">{{res}}</span>
+</div>    
+<input type="checkbox" [(ngModel)]="montrerHisto" /> voir l'historique des calculs<br/>
+    <ul *ngIf="montrerHisto">
+        <li *ngFor="let h of historiqueCalculs">{{h}}</li>
+    </ul>    
+           
+<hr/>
+    <div class="c2" (mousemove)="onMouseMove($event)"
+           (mouseout)="onMouseLeave($event)">
+           Zone à survoler à la souris .<br>
+           x={{x}} , y={{y}}
+    </div>

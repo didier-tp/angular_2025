@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <!-- <app-header titre="monAppliAngular"  ></app-header> -->
+   <app-header [titre]="title"  ></app-header>
+   <!-- affiche le composant lie à la route courante --> 
+   <router-outlet />
+   
+   <app-footer    ></app-footer>
+</div>
+
+<!-- 
+<app-header></app-header>
+<p> welcome to {{title}} </p>
+<app-basic></app-basic>
+<app-footer></app-footer>
+-->

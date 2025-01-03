@@ -1,0 +1,48 @@
+<h3>reservation</h3>
+<form novalidate [formGroup]="resaForm">
+    <div class="form-group row">
+        <label class="col-sm-2">firstName:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" formControlName="firstName">
+        </div>
+        <div class="col-sm-4 smallError">{{myFieldErrorMessage('firstName')}}</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">lastName:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" formControlName="lastName">
+        </div>
+        <div class="col-sm-4 smallError">{{myFieldErrorMessage('lastName','must start with uppercase and other character')}}</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">telephone:</label>
+        <div class="col-sm-6">
+            <input type="telephone" class="form-control" formControlName="telephone">
+        </div>
+        <div class="col-sm-4 smallError">{{myFieldErrorMessage('telephone')}}</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">email:</label>
+        <div class="col-sm-6">
+            <input type="email" class="form-control" formControlName="email">
+        </div>
+        <div class="col-sm-4 smallError">{{myFieldErrorMessage('email')}}</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">dateTime:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" formControlName="date">
+        </div>
+        <div class="col-sm-4 smallError">{{myFieldErrorMessage('date','yyyy-mm-dd')}}</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">dateTime:</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" formControlName="time">
+        </div>
+        <div class="col-sm-4 smallError">{{myFieldErrorMessage('time',"HH:MM")}}</div>
+    </div>
+    <input type="button" value="reservation" (click)="onReservation()" [disabled]="!resaForm.valid"/>
+    <hr />
+    {{message}}
+</form>

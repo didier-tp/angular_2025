@@ -1,0 +1,16 @@
+<p class="entete"
+   [style.background-color]="preferencesService.couleurFondPreferee"
+   > {{titre}} &nbsp; 
+   <span class="badge bg-primary" *ngIf="isConnected">
+    <i class="bi-person"></i>
+   </span>
+   &nbsp;
+    <a routerLink="/ngr-welcome">welcome</a> &nbsp;
+    <a routerLink="/ngr-basic">basic</a> &nbsp;
+    <a routerLink="/ngr-reservation">reservation</a> &nbsp;
+    <a routerLink="/ngr-login">login (standalone)</a> &nbsp;
+    <a routerLink="/ngr-oauth2-login-out">OAuth2 logInOut</a> &nbsp;
+    <a routerLink="/ngr-conversion">conversion</a> &nbsp;
+    <a routerLink="/ngr-devise">devise(crud)</a> &nbsp;
+    <a routerLink="/ngr-demo">demo</a> &nbsp;
+</p>
