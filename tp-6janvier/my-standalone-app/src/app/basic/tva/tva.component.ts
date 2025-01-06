@@ -1,7 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-tva',
@@ -21,15 +20,15 @@ export class TvaComponent {
   sTva = computed( () => this.sHt() * this.sTaux() / 100);
   sTtc = computed (()=> this.sHt() + this.sTva() );
 
-  onActualiserHt(evt : any){
-    let zoneHt : any = evt.target;
+  onActualiserHt(evt : Event){
+    let zoneHt : HTMLInputElement = <HTMLInputElement> evt.target;
     let vHt = zoneHt.value;
     console.log("ht="+vHt);
     this.sHt.set(Number(vHt));
   }
 
-  onActualiserTaux(evt : any){
-    let zoneTaux : any = evt.target;
+  onActualiserTaux(evt : Event){
+    let zoneTaux : HTMLSelectElement  = <HTMLSelectElement> evt.target;
     let vTaux = zoneTaux.value;
     console.log("taux="+vTaux);
     this.sTaux.set(Number(vTaux));
