@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-tva',
@@ -12,15 +13,49 @@ export class TvaComponent {
 
   tauxPossibles = [ 5.0 , 10.0 , 20.0];
 
-  ht /* number*/ = 0;
-  taux /* number*/  = 0; //taux en %
+  //version avec signaux:
+
+  sHt  = signal(0);
+  sTaux  = signal(20); //taux en % (20% par defaut)
+
+  sTva = computed( () => this.sHt() * this.sTaux() / 100);
+  sTtc = computed (()=> this.sHt() + this.sTva() );
+
+  onActualiserHt(evt : any){
+    let zoneHt : any = evt.target;
+    let vHt = zoneHt.value;
+    console.log("ht="+vHt);
+    this.sHt.set(Number(vHt));
+  }
+
+  onActualiserTaux(evt : any){
+    let zoneTaux : any = evt.target;
+    let vTaux = zoneTaux.value;
+    console.log("taux="+vTaux);
+    this.sTaux.set(Number(vTaux));
+  }
+
+}
+
+
+
+/*
+version sans signal:
+--------------------
+export class TvaComponent {
+
+  tauxPossibles = [ 5.0 , 10.0 , 20.0];
+
+  ht  = 0;
+  taux   = 0; //taux en %
 
   onCalculerTvaEtTtc(){
     this.tva = this.ht * this.taux / 100; 
     this.ttc = this.ht + this.tva;
   }
 
-  tva /* number*/= 0;
-  ttc /* number*/  = 0;
+  tva = 0;
+  ttc   = 0;
 
 }
+*/
