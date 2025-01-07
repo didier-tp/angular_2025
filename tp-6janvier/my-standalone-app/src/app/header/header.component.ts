@@ -11,4 +11,12 @@ export class HeaderComponent {
 
   titre = input("titre_par_defaut"); //ou bien @Input()
 
+  constructor(){
+    console.log("dans constructor() de HeaderComponent , titre="+this.titre);
+  }
+
+  ngOnInit(){
+    console.log("dans ngOnInit() de HeaderComponent , titre="+this.titre);
+  }
+
 }
