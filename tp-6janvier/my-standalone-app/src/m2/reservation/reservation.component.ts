@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 import { Reservation } from '../common/data/reservation'; 
 
+// ou bien  standalone: true,
+// et imports: [ ReactiveFormsModule ]
 @Component({
   selector: 'app-reservation',
   standalone: false,
