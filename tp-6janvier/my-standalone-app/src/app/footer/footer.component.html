@@ -1,1 +1,6 @@
-<p class="piedPage">footer works!</p>
+<div class="piedPage">footer -
+    couleurFondPreferee:
+    <select [(ngModel)]="preferencesService.couleurFondPreferee" >
+       <option *ngFor="let c of listeCouleurs" [ngValue]="c">{{c}}</option>
+    </select>
+</div>
