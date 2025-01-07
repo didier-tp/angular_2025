@@ -23,8 +23,10 @@ export class ReservationComponent {
       lastName: [this.reservation.lastName, [Validators.required, Validators.pattern("[A-Z].+")]],
       telephone: [this.reservation.telephone, [Validators.required, Validators.minLength(10)]],
       email: [this.reservation.email, [Validators.required, Validators.email]],
-      date:[ /*'2024-09-01' */this.dateAsString(this.reservation.dateTime), [Validators.required , Validators.pattern('[0-9]{4}-[0-9]{2}-[0-9]{2}')]],
-      time: [ /*'14:30' */ this.localTimeAsString(this.reservation.dateTime), [Validators.required , Validators.pattern('[0-9]{2}:[0-9]{2}.*')]]
+      date:[ /*'2024-09-01' */this.dateAsString(this.reservation.dateTime), [Validators.required , 
+                              Validators.pattern('[0-9]{4}-[0-9]{2}-[0-9]{2}')]],
+      time: [ /*'14:30' */ this.localTimeAsString(this.reservation.dateTime), [Validators.required , 
+                            Validators.pattern('[0-9]{2}:[0-9]{2}.*')]]
     
     });
   }
