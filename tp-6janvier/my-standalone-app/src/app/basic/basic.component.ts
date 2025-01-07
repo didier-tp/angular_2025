@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CalculatriceComponent } from './calculatrice/calculatrice.component';
 import { TvaComponent } from './tva/tva.component';
+import { TogglePanelComponent } from "../common/component/toggle-panel/toggle-panel.component";
 
 @Component({
   selector: 'app-basic',
-  imports: [CalculatriceComponent,TvaComponent],
+  imports: [CalculatriceComponent, TvaComponent, TogglePanelComponent],
   templateUrl: './basic.component.html',
   styleUrl: './basic.component.scss'
 })
