@@ -1,10 +1,11 @@
 import { DecimalPipe, NgFor } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToFixedPipe } from '../../common/pipe/to-fixed.pipe';
 
 @Component({
   selector: 'app-tva',
-  imports: [FormsModule, NgFor , DecimalPipe],
+  imports: [FormsModule, NgFor , DecimalPipe , ToFixedPipe],
   templateUrl: './tva.component.html',
   styleUrl: './tva.component.scss'
 })

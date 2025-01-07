@@ -9,6 +9,6 @@ taux: <select [value]="sTaux()" (change)="onActualiserTaux($event)" >
 <!--
 <button (click)="onCalculerTvaEtTtc()" >calculer Tva et ttc</button><br/>
 -->
-tva=<span [style.font-weight]="sTva()>0?'bold':'normal'">{{sTva()}}</span><br/>
+tva=<span [style.font-weight]="sTva()>0?'bold':'normal'">{{sTva() | toFixed:3}}</span><br/>
 ttc={{sTtc() | number:'1.0-2':'fr'}}<br/>
 </div>
