@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
 import { Devise } from '../data/devise';
 
-@Injectable({
-  providedIn: 'root'
+@Injectable( {
+ providedIn: 'root'
 })
 export class DeviseService {
+
+  constructor(){
+    console.log("DeviseService")
+  }
 
   //jeux de données (en dur) pour pré-version (simulation asynchrone)
   private devises: Devise[] = [
@@ -13,7 +17,7 @@ export class DeviseService {
     new Devise('USD', 'dollar', 1.1),
     new Devise('GBP', 'livre', 0.9)
   ];
-  
+
   public getAllDevises$(): Observable<Devise[]> {
     return of(this.devises) //version préliminaire (cependant asynchrone)
       .pipe(
