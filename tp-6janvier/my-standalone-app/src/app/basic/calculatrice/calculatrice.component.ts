@@ -1,6 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
 selector: 'app-calculatrice',
@@ -10,6 +11,17 @@ templateUrl: './calculatrice.component.html',
 styleUrls: ['./calculatrice.component.scss']
 })
 export class CalculatriceComponent {
+
+modeChoisi = "simple" ; //ou "sophistiquee"
+
+constructor(route : ActivatedRoute) {
+    route.params.subscribe(
+    (params:Params)=>{
+       //NB: { path: 'calculatrice/:mode', ... },
+       this.modeChoisi = params['mode'];
+    }) ;
+}
+
 a : number = 0;
 b : number = 0;
 res : number = 0;
@@ -39,5 +51,5 @@ this.y = evt.pageY - currentDiv.offsetTop;
 onMouseLeave(evt : MouseEvent){
 this.x=0; this.y=0;
 }
-constructor() { }
+
 }
