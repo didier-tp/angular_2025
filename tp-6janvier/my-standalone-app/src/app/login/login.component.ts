@@ -29,6 +29,9 @@ export class LoginComponent {
        this.message = loginResponse.message;
        this.ok = loginResponse.status;
        //pour <span [style.color]="ok?'green':'red'">{{message}}</span>
+       
+      sessionStorage.setItem("access_token", loginResponse.token ?? "");
+      
   }
 
   

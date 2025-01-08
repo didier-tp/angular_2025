@@ -9,3 +9,8 @@ code devise cible : <select [(ngModel)]="codeDeviseCible" >
 <input type="button" (click)="onConvertir()" value="convertir" /> <br/>
  <!-- montantConverti = {{montantConverti}} -->
   montantConverti = {{montantConvertiObs$ | async}} 
+
+  <hr/>{{message}} <hr/>
+code devise a modifier: <input [(ngModel)]="codeToUpdate" /> (ex: JPY , GBP) <br/>
+nouveau change: <input [(ngModel)]="changeToUpdate" /> (ex: 0.9 , 1.1 ) <br/>
+<button (click)="onUpdate()">update devise</button>
