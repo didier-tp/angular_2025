@@ -13,4 +13,11 @@ describe('PreferencesService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('add(5,6)==11', () => {
+    expect(service.add(5,6)).toBe(11);
+  });
 });
+
+//à lancer via 
+// ng test  --include=**/service/preferences.service.spec.ts
