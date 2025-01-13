@@ -12,7 +12,9 @@ import { myAuthInterceptor } from './common/interceptor/my-auth.interceptor';
 registerLocaleData(localeFr);
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()), provideAnimationsAsync(),
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideRouter(routes), 
+	provideClientHydration(withEventReplay()), provideAnimationsAsync(),
     provideHttpClient(withInterceptors([myAuthInterceptor]))
   ]
 };

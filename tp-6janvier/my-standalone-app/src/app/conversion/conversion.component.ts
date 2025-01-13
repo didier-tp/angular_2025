@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { Devise } from '../common/data/devise';
 import { DeviseService } from '../common/service/devise.service';
 import { FormsModule } from '@angular/forms';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, Observable, shareReplay } from 'rxjs';
+import { ActivatedRoute, Data } from '@angular/router';
+import { EssaiService } from '../common/service/essai.service';
 
 @Component({
   selector: 'app-conversion',
@@ -19,8 +21,15 @@ export class ConversionComponent {
   montantConvertiObs$!: Observable<number>;
   listeDevises: Devise[] = []; //à choisir dans liste déroulante.
 
-  constructor(private _deviseService: DeviseService) {
-    console.log("ConvertionComponent")
+  constructor(private route: ActivatedRoute,
+    private _deviseService: DeviseService) {
+    console.log("ConversionComponent")
+    this.route.data.subscribe(
+      (data: Data) =>{ 
+        let tabDevises = data['devises'];
+        if(tabDevises)
+           this.initListeDevises(data['devises']); }
+    );
   }
 
   async onConvertir2() {
@@ -40,6 +49,8 @@ export class ConversionComponent {
     this.montantConvertiObs$ = this._deviseService.convertir$(this.montant,
       this.codeDeviseSource,
       this.codeDeviseCible);
+     // .pipe(shareReplay(1));  //hot observable partagé si plusieurs affichage via {{ montantConvertiObs$ | async }}
+      
     /*
     this._deviseService.convertir$(this.montant,
       this.codeDeviseSource,
@@ -65,14 +76,21 @@ export class ConversionComponent {
     }
   }
 
+  private _essaiService = inject(EssaiService);//petit essai temporaire
+
   //ngOnInit() est automatiquement appelée par le framework après le constructeur
   //et après la prise en compte des injections et des éventuels @Input
   ngOnInit(): void {
-    this._deviseService.getAllDevises$()
+    //besoin de chercher les devises que si pas de Resolver
+    if(this.listeDevises.length==0)
+      this._deviseService.getAllDevises$()
       .subscribe({
         next: (tabDev: Devise[]) => { this.initListeDevises(tabDev); },
         error: (err) => { console.log("error:" + err) }
       });
+
+      this._essaiService.getCapitalCityFromCountryCode$('de').subscribe(
+        (capitale)=>console.log("capitale="+capitale));
   }
 
   message = "";

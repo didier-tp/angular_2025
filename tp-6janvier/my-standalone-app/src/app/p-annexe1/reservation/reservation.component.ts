@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidationErrors, ReactiveFormsModule } from '@angular/forms';
 import { Reservation } from '../common/data/reservation'; 
 
 // ou bien  standalone: true,
 // et imports: [ ReactiveFormsModule ]
 @Component({
   selector: 'app-reservation',
-  standalone: false,
-
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './reservation.component.html',
   styleUrl: './reservation.component.scss'
 })

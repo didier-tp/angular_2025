@@ -13,27 +13,13 @@ export class TvaComponent {
 
   tauxPossibles = [ 5.0 , 10.0 , 20.0];
 
-  //version avec signaux:
+  //version avec signaux et avec [(ngModel)]:
 
   sHt  = signal(0);
   sTaux  = signal(20); //taux en % (20% par defaut)
 
   sTva = computed( () => this.sHt() * this.sTaux() / 100);
   sTtc = computed (()=> this.sHt() + this.sTva() );
-
-  onActualiserHt(evt : Event){
-    let zoneHt : HTMLInputElement = <HTMLInputElement> evt.target;
-    let vHt = zoneHt.value;
-    console.log("ht="+vHt);
-    this.sHt.set(Number(vHt));
-  }
-
-  onActualiserTaux(evt : Event){
-    let zoneTaux : HTMLSelectElement  = <HTMLSelectElement> evt.target;
-    let vTaux = zoneTaux.value;
-    console.log("taux="+vTaux);
-    this.sTaux.set(Number(vTaux));
-  }
 
 }
 
@@ -58,4 +44,28 @@ export class TvaComponent {
   ttc   = 0;
 
 }
+*/
+
+/*
+   //version avec signaux et sans [(ngModel)]
+
+   sHt  = signal(0);
+  sTaux  = signal(20); //taux en % (20% par defaut)
+
+  sTva = computed( () => this.sHt() * this.sTaux() / 100);
+  sTtc = computed (()=> this.sHt() + this.sTva() );
+
+  onActualiserHt(evt : Event){
+    let zoneHt : HTMLInputElement = <HTMLInputElement> evt.target;
+    let vHt = zoneHt.value;
+    console.log("ht="+vHt);
+    this.sHt.set(Number(vHt));
+  }
+
+  onActualiserTaux(evt : Event){
+    let zoneTaux : HTMLSelectElement  = <HTMLSelectElement> evt.target;
+    let vTaux = zoneTaux.value;
+    console.log("taux="+vTaux);
+    this.sTaux.set(Number(vTaux));
+  }
 */

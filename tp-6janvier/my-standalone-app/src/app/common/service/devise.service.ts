@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, delay, map } from 'rxjs';
+import { Observable, of, delay, map, catchError, tap, throwError  } from 'rxjs';
 import { Devise } from '../data/devise';
 import { HttpClient } from '@angular/common/http';
 
@@ -35,7 +35,11 @@ putDevise$(d :Devise): Observable<Devise>{
   public getAllDevises$(): Observable<Devise[]> {
     let url = this._apiBaseUrl + "/public/devises";
     console.log("url = " + url);
-    return this._http.get<Devise[]>(url);
+    //return this._http.get<Devise[]>(url);
+    return this._http.get<Devise[]>(url)
+    .pipe(
+      delay(800) // temp 800ms wait (to see Resolver effect)
+    );
   }
   public convertir$(montant: number,
     codeDeviseSrc: string,
@@ -47,7 +51,14 @@ putDevise$(d :Devise): Observable<Devise>{
     //console.log( "url = " + url);
     return this._http.get<ConvertRes>(url)
       .pipe(
-        map((res: ConvertRes) => res.result)
+        map((res: ConvertRes) => res.result),
+        tap( (montantConverti) => console.log(`convertir$ : montantConverti=${montantConverti}`)),
+        catchError(error => {
+          console.error('Error occurred:', error);
+          
+          //return of(0.0);// we can provide a fallback value
+          return throwError(() => error);//we can re-throw this error after log or ...
+        })
       );
   }
 }

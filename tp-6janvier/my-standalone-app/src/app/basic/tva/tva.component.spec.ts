@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TvaComponent } from './tva.component';
+import { NgFor, DecimalPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ToFixedPipe } from '../../common/pipe/to-fixed.pipe';
 
 describe('TvaComponent', () => {
   let component: TvaComponent;
@@ -8,7 +11,7 @@ describe('TvaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TvaComponent]
+      imports: [TvaComponent,FormsModule, NgFor , DecimalPipe , ToFixedPipe]
     })
     .compileComponents();
 
@@ -21,3 +24,6 @@ describe('TvaComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+//à lancer via 
+// ng test  --include=**/tva.component.spec.ts

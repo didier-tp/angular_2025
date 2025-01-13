@@ -1,7 +1,8 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { ActivatedRoute, Params } from '@angular/router';
+
 
 @Component({
 selector: 'app-calculatrice',
@@ -40,6 +41,7 @@ this.res = 0;
 }
 this.historiqueCalculs.push(`${this.a} ${op} ${this.b} = ${this.res}`)
 }
+
 //coordonnées relatives de la souris qui survole une div
 x:number=0;
 y:number=0;

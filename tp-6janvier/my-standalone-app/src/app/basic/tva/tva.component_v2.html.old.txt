@@ -1,7 +1,7 @@
 <div class="fondTva">
 <p>calcul de Tva</p>
-ht: <input type="number" [(ngModel)]="sHt" > <br/>
-taux: <select [(ngModel)]="sTaux"  >
+ht: <input type="number" [value]="sHt()" (input)="onActualiserHt($event)"> <br/>
+taux: <select [value]="sTaux()" (change)="onActualiserTaux($event)" >
     @for(t of tauxPossibles; track t){
         <option [ngValue]="t">{{t}}</option>
     }
