@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 
 @Component({
   selector: 'app-toggle-panel',
@@ -12,5 +12,6 @@ export class TogglePanelComponent {
   //@Input() //old version without signal
   title=input("defaultTitle");//as signal
 
-  toggleP=false;
+  //toggleP=false;//old version without signal
+  panelOpenState=model(false); //with signal
 }

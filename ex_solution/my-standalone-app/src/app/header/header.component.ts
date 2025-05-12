@@ -31,6 +31,10 @@ export class HeaderComponent {
     this._sessionService.userInSession$.subscribe((userInSession)=>{
       this.isConnected = userInSession.authenticated;
     });
+    console.log("dans constructeur de HeaderComponent , titre=" + this.titre())
+  }
+
+  ngOnInit(): void { console.log("dans ngOnInit() de HeaderComponent , titre=" + this.titre())
   }
 
 }

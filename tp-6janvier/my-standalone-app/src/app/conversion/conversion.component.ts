@@ -48,8 +48,8 @@ export class ConversionComponent {
 
     this.montantConvertiObs$ = this._deviseService.convertir$(this.montant,
       this.codeDeviseSource,
-      this.codeDeviseCible);
-     // .pipe(shareReplay(1));  //hot observable partagé si plusieurs affichage via {{ montantConvertiObs$ | async }}
+      this.codeDeviseCible)
+     //.pipe(shareReplay(1));  //hot observable partagé si plusieurs affichage via {{ montantConvertiObs$ | async }}
       
     /*
     this._deviseService.convertir$(this.montant,

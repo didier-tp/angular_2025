@@ -55,6 +55,7 @@ et ajouter "src/silent-refresh.html" dans le premier bloc assets de angular.json
             ],
 
 * add OAuthModule.forRoot() in imports[] of app.module.ts with import { OAuthModule } from 'angular-oauth2-oidc'; 
+ or add provideOAuthClient() in app.config.ts if standalone app (angular >=17)
 + code de Oauth2LogInOutComponent , service/OAuth2SessionService , data/UserInSession 
 et tenir compte du fait que le token s'appelle "access_token" (et pas token si authToken) dans intercepteur et/ou gardien
 
