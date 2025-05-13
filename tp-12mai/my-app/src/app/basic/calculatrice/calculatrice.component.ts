@@ -13,6 +13,8 @@ export class CalculatriceComponent {
   b: number = 0;
   res: number = 0;
 
+  listeRes : number[] = [];
+
   onCalculer(op: string) {
     switch (op) {
       case "+":
@@ -24,6 +26,7 @@ export class CalculatriceComponent {
       default:
         this.res = 0;
     }
+    this.listeRes.push(this.res);
   }
 
   //coordonnées relatives de la souris qui survole une div
