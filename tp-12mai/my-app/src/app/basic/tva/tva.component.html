@@ -7,7 +7,7 @@ tauxTva:<select [(ngModel)]="tauxTvaPct"
 </select> <br/>
 <!-- <button (click)="onCalculerTvaTtc()">calculer</button> <br/>-->
 tva: {{tva | number:'1.0-2' : 'fr'}} <br/>
-ttc: {{ttc | number:'1.0-2': 'fr'}} <br/>
+ttc: {{ttc | toFixed:2}} <br/>
 </div>
 <!--
 <p>V1 sans liste déroulante:</p>

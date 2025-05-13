@@ -1,10 +1,11 @@
-import { CommonModule, DecimalPipe, NgFor, NgIf } from '@angular/common';
+import { CommonModule, DecimalPipe, NgFor, NgIf, PercentPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToFixedPipe } from '../../common/pipe/to-fixed.pipe';
 
 @Component({
   selector: 'app-tva',
- imports: [FormsModule,NgFor,DecimalPipe],
+ imports: [FormsModule,NgFor,DecimalPipe,PercentPipe,ToFixedPipe],
  //imports: [FormsModule,CommonModule],
   templateUrl: './tva.component.html',
   styleUrl: './tva.component.scss'
