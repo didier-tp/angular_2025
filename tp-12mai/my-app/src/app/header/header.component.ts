@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-header',
   imports: [RouterLink],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss','../common/style/common.scss']
 })
 export class HeaderComponent {
 

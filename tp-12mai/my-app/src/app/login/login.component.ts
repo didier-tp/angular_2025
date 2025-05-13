@@ -6,7 +6,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   selector: 'app-login',
   imports: [FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss' , '../common/style/common.scss']
 })
 export class LoginComponent {
   public login: Login = new Login();
