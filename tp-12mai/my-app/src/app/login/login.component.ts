@@ -10,7 +10,11 @@ import { FormsModule, NgForm } from '@angular/forms';
 })
 export class LoginComponent {
   public login: Login = new Login();
-  public message: string = "";
+  //public message :string | undefined ;
+  //public message :string ="";
+  public message  ="";
+  //public message! : string  ;
+
   public onLogin() {
     this.message = "donnees saisies = " + JSON.stringify(this.login);
   }
