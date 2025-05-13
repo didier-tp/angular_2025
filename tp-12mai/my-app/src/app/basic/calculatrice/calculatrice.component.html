@@ -12,9 +12,18 @@
     {{res}}
     </span> <br>
     <input type="checkbox" [(ngModel)]="montrerHisto"/> montrerHistorique <br/>
+   <!--
     <ul *ngIf="montrerHisto">
         <li *ngFor="let r of listeRes">{{r}}</li>
     </ul>
+    -->
+    @if(montrerHisto){
+       <ul>
+        @for(r of listeRes;track r;let idx = $index){
+            <li>{{idx}} - {{r}}</li>
+        }
+       </ul> 
+    }
     <hr>
 
     <hr>
