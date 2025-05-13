@@ -1,9 +1,10 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tva',
-  imports: [FormsModule],
+  imports: [FormsModule,NgFor,NgIf],
   templateUrl: './tva.component.html',
   styleUrl: './tva.component.scss'
 })
