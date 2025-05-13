@@ -1,11 +1,11 @@
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule, DecimalPipe, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tva',
- // imports: [FormsModule,NgFor,NgIf],
- imports: [FormsModule,CommonModule],
+ imports: [FormsModule,NgFor,DecimalPipe],
+ //imports: [FormsModule,CommonModule],
   templateUrl: './tva.component.html',
   styleUrl: './tva.component.scss'
 })

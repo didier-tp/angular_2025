@@ -6,8 +6,8 @@ tauxTva:<select [(ngModel)]="tauxTvaPct"
     <option *ngFor="let t of tauxPossibles" [ngValue]="t">{{t}}%</option>
 </select> <br/>
 <!-- <button (click)="onCalculerTvaTtc()">calculer</button> <br/>-->
-tva: {{tva}} <br/>
-ttc: {{ttc}} <br/>
+tva: {{tva | number:'1.0-2' : 'fr'}} <br/>
+ttc: {{ttc | number:'1.0-2': 'fr'}} <br/>
 </div>
 <!--
 <p>V1 sans liste déroulante:</p>
