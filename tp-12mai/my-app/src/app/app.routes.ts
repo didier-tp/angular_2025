@@ -7,5 +7,6 @@ export const routes: Routes = [
     { path: 'ngr-welcome', component: WelcomeComponent },
     { path: '', redirectTo: '/ngr-welcome', pathMatch: 'full'},
     { path: 'ngr-login', component: LoginComponent },
-    { path: 'ngr-basic', component: BasicComponent }
+    { path: 'ngr-basic', component: BasicComponent },
+    { path: '**', redirectTo: '/ngr-welcome', pathMatch: 'full' }
 ];
