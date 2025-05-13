@@ -1,1 +1,18 @@
-<p>tva works!</p>
+<p>calcul de Tva</p>
+ht:<input [(ngModel)]="ht" /> <br/>
+tauxTva(en %):<input [(ngModel)]="tauxTvaPct" /> <br/>
+<button (click)="onCalculerTvaTtc()">calculer</button> <br/>
+tva: {{tva}} <br/>
+ttc: {{ttc}} <br/>
+
+<!--
+V1:
+<p>calcul de Tva</p>
+ht:<input [(ngModel)]="ht" /> <br/>
+tauxTva(en %):<input [(ngModel)]="tauxTvaPct" /> <br/>
+<button (click)="onCalculerTvaTtc()">calculer</button> <br/>
+tva: {{tva}} <br/>
+ttc: {{ttc}} <br/>
+-->
+
+
