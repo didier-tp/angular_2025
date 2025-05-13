@@ -1,10 +1,11 @@
+import { NgIf, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-calculatrice',
-  imports: [FormsModule],
+  imports: [FormsModule , NgIf , NgFor],
   templateUrl: './calculatrice.component.html',
   styleUrl: './calculatrice.component.scss'
 })

@@ -11,6 +11,9 @@
     <span [style.font-weight]="res>0?'bold':'normal'" [class.negatif]="res<0" >
     {{res}}
     </span> <br>
+    <ul>
+        <li *ngFor="let r of listeRes">{{r}}</li>
+    </ul>
     <hr>
 
     <hr>
