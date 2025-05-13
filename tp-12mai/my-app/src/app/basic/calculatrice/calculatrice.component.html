@@ -11,7 +11,8 @@
     <span [style.font-weight]="res>0?'bold':'normal'" [class.negatif]="res<0" >
     {{res}}
     </span> <br>
-    <ul>
+    <input type="checkbox" [(ngModel)]="montrerHisto"/> montrerHistorique <br/>
+    <ul *ngIf="montrerHisto">
         <li *ngFor="let r of listeRes">{{r}}</li>
     </ul>
     <hr>

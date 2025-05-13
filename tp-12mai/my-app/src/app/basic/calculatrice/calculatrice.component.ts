@@ -15,6 +15,7 @@ export class CalculatriceComponent {
   res: number = 0;
 
   listeRes : number[] = [];
+  montrerHisto : boolean = true;
 
   onCalculer(op: string) {
     switch (op) {
