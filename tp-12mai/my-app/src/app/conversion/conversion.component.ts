@@ -15,9 +15,12 @@ export class ConversionComponent implements OnInit {
   codeDeviseCible: string = "?";
   montantConverti: number = 0;
   listeDevises: Devise[] = []; //à choisir dans liste déroulante.
+
   constructor(private _deviseService: DeviseService) { }
+
   onConvertir() {
     console.log("debut de onConvertir")
+    this.montantConverti=0;
     this._deviseService.convertir$(this.montant,
       this.codeDeviseSource,
       this.codeDeviseCible)
@@ -32,6 +35,7 @@ export class ConversionComponent implements OnInit {
     //Attention : sur cette ligne , le résultat n'est à ce stade pas encore connu
     //car appel asynchrone non bloquant et réponse ultérieure via callback
   }
+
   initListeDevises(tabDevises: Devise[]) {
     this.listeDevises = tabDevises;
     if (tabDevises && tabDevises.length > 0) {
@@ -39,6 +43,7 @@ export class ConversionComponent implements OnInit {
       this.codeDeviseCible = tabDevises[0].code; //valeur par défaut
     }
   }
+
   //ngOnInit() est automatiquement appelée par le framework après le constructeur
   //et après la prise en compte des injections et des éventuels @Input
   ngOnInit(): void {
