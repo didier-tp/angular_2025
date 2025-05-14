@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { PreferencesService } from '../common/service/preferences.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent {
   titre = "titre_par_defaut"
 
 
-  constructor() { console.log("dans constructeur de HeaderComponent , titre=" + this.titre)
+  constructor(public preferencesService : PreferencesService) { console.log("dans constructeur de HeaderComponent , titre=" + this.titre)
 }
 ngOnInit(): void { console.log("dans ngOnInit() de HeaderComponent , titre=" + this.titre)
 }
