@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,5 +8,8 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./header.component.scss','../common/style/common.scss']
 })
 export class HeaderComponent {
+
+  @Input()
+  titre = "titre_par_defaut"
 
 }
