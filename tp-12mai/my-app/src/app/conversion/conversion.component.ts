@@ -3,6 +3,7 @@ import { DeviseService } from '../common/service/devise.service'
 import { Devise } from '../common/data/devise'
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
 @Component({
   selector: 'app-conversion',
   imports: [FormsModule,NgFor],
@@ -18,7 +19,20 @@ export class ConversionComponent implements OnInit {
 
   constructor(private _deviseService: DeviseService) { }
 
-  onConvertir() {
+  async onConvertir(){
+    try{
+      console.log("debut de onConvertir")
+      this.montantConverti=0;
+      this.montantConverti= await firstValueFrom(this._deviseService.convertir$(this.montant,
+                                                 this.codeDeviseSource, this.codeDeviseCible));
+       console.log("resultat obtenu en différé")
+    }catch(err){
+       console.log(err);
+    }
+    console.log("fin de onConvertir");
+  }
+
+  onConvertirV1() {
     console.log("debut de onConvertir")
     this.montantConverti=0;
     this._deviseService.convertir$(this.montant,
