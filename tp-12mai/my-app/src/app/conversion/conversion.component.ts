@@ -3,7 +3,7 @@ import { DeviseService } from '../common/service/devise.service'
 import { Devise } from '../common/data/devise'
 import { AsyncPipe, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { firstValueFrom, Observable } from 'rxjs';
+import { filter, firstValueFrom, map, Observable, switchMap, take, toArray } from 'rxjs';
 @Component({
   selector: 'app-conversion',
   imports: [FormsModule,NgFor,AsyncPipe],
@@ -22,7 +22,7 @@ export class ConversionComponent implements OnInit {
   montantConvertiObservable! : Observable<number>;
 
   onConvertir(){
-    this.montantConverti=0;
+    //this.montantConverti=0;
     this.montantConvertiObservable=
         this._deviseService.convertir$(this.montant,
         this.codeDeviseSource,
@@ -49,6 +49,7 @@ export class ConversionComponent implements OnInit {
     this._deviseService.convertir$(this.montant,
       this.codeDeviseSource,
       this.codeDeviseCible)
+      .pipe(take(1))//pour garantir un unsubscribe() différé
       .subscribe({
         next: (res: number) => {
           this.montantConverti = res;
@@ -73,6 +74,13 @@ export class ConversionComponent implements OnInit {
   //et après la prise en compte des injections et des éventuels @Input
   ngOnInit(): void {
     this._deviseService.getAllDevises$()
+      .pipe(
+        switchMap(tabDev=>tabDev),
+        filter((d)=>d.change<=80),
+        toArray(),
+        //map(tabDev=>tabDev.sort((d1,d2)=>d1.change-d2.change))
+        map(tabDev=>tabDev.sort((d1,d2) => d1?d1.code.localeCompare(d2.code):0))
+      )
       .subscribe({
         next: (tabDev: Devise[]) => { this.initListeDevises(tabDev); },
         error: (err) => { console.log("error:" + err) }
