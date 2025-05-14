@@ -21,7 +21,7 @@ export class ConversionComponent implements OnInit {
 
   montantConvertiObservable! : Observable<number>;
 
-  async onConvertir(){
+  onConvertir(){
     this.montantConverti=0;
     this.montantConvertiObservable=
         this._deviseService.convertir$(this.montant,
