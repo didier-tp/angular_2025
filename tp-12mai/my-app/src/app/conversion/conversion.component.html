@@ -7,4 +7,5 @@ code devise cible : <select [(ngModel)]="codeDeviseCible" >
 <option *ngFor="let d of listeDevises">{{d.code}}</option>
 </select> <br/>
 <input type="button" (click)="onConvertir()" value="convertir" /> <br/>
-montantConverti = {{montantConverti}}
+<!-- montantConverti = {{montantConverti}} <br/> -->
+montantConverti (via le pipe async)= {{montantConvertiObservable | async}}

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviseService } from '../common/service/devise.service'
 import { Devise } from '../common/data/devise'
-import { NgFor } from '@angular/common';
+import { AsyncPipe, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 @Component({
   selector: 'app-conversion',
-  imports: [FormsModule,NgFor],
+  imports: [FormsModule,NgFor,AsyncPipe],
   templateUrl: './conversion.component.html',
   styleUrls: ['./conversion.component.scss']
 })
@@ -19,7 +19,18 @@ export class ConversionComponent implements OnInit {
 
   constructor(private _deviseService: DeviseService) { }
 
+  montantConvertiObservable! : Observable<number>;
+
   async onConvertir(){
+    this.montantConverti=0;
+    this.montantConvertiObservable=
+        this._deviseService.convertir$(this.montant,
+        this.codeDeviseSource,
+         this.codeDeviseCible);
+  }
+
+
+  async onConvertirV2(){
     try{
       console.log("debut de onConvertir")
       this.montantConverti=0;
