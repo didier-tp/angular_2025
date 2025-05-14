@@ -5,8 +5,8 @@
 <span class="my-icon" [style.display]="panelOpenState()?'inline-block':'none'">-</span>{{title()}}
 </a>
 </h4>
-<!-- <div class="my-card-body my-collapse" [class.my-show]="panelOpenState()"></div> -->
-<div class="my-card-body" [hidden]="panelOpenState()">
+<div class="my-card-body my-collapse" [class.my-show]="panelOpenState()">
+<!-- <div class="my-card-body" [hidden]="panelOpenState()"> -->
 <ng-content></ng-content> <!-- remplacé par le contenu imbriqué -->
 </div>
 </div>
