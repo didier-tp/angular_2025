@@ -21,7 +21,7 @@ export const routes: Routes = [
         ]
     },
     { path: 'ngr-reservation', component: ReservationComponent },
-    { path: 'ngr-conversion', component: ConversionComponent , canActivate:[authGuard] },
-   // { path: 'ngr-conversion', component: ConversionComponent , canActivate:[] },
+    //{ path: 'ngr-conversion', component: ConversionComponent , canActivate:[authGuard] },
+   { path: 'ngr-conversion', component: ConversionComponent , canActivate:[] },
     { path: '**', redirectTo: '/ngr-welcome', pathMatch: 'full' }
 ];
