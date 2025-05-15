@@ -13,6 +13,7 @@ export class CalculatriceComponent {
   a: number = 0;
   b: number = 0;
   res: number = 0;
+  modeChoisi ="simple"; //ou "sophistiquee"
 
   listeRes : number[] = [];
   montrerHisto : boolean = true;
