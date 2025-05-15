@@ -20,4 +20,9 @@ export class PreferencesService {
     //let c = localStorage.getItem('preferences.couleurFond');
     this._couleurFondPreferee = c ? c : 'lightgrey';
   }
+
+  public carre(x:number){
+    return x*x;
+  }
+
 }
