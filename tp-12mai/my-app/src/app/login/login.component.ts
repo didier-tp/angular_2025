@@ -23,11 +23,13 @@ export class LoginComponent {
 
   public onLogin() {
    // this.message = "donnees saisies = " + JSON.stringify(this.login);
+   sessionStorage.setItem("access_token","");
    this.loginService.postLogin$(this.login)
    .subscribe({
       next: (loginResponse : LoginResponse)=>{ this.message = loginResponse.message;
                                                this.ok = loginResponse.status;
                                                console.log(JSON.stringify(loginResponse));
+                                               sessionStorage.setItem("access_token",loginResponse.token);
       },
       error: (err)=>{console.log(JSON.stringify(err))}
      })
