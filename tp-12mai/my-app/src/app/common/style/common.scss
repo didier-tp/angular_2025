@@ -8,5 +8,5 @@
 /* styles applied directly to the PARENT/ANCESTOR of whole current component only (ex: <div> in app-component)
   ---> assez rare */
 :host-context(div) {
-    background-color: aqua;
+    background-color: white;
 }

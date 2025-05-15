@@ -75,7 +75,7 @@ export class ConversionComponent implements OnInit {
   ngOnInit(): void {
     this._deviseService.getAllDevises$()
       .pipe(
-        switchMap(tabDev=>tabDev),
+        switchMap(devIntab=>devIntab),
         filter((d)=>d.change<=80),
         toArray(),
         //map(tabDev=>tabDev.sort((d1,d2)=>d1.change-d2.change))

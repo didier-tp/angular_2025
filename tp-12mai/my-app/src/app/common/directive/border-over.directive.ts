@@ -25,8 +25,8 @@ export class BorderOverDirective {
 
 
   constructor(el: ElementRef) {
-    //always sttings:
-    el.nativeElement.style._borderWidth = '2px';
+    //always settings:
+    el.nativeElement.style.borderWidth = '2px';
    }
 
    @HostListener('mouseenter')
