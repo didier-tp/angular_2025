@@ -14,6 +14,7 @@ export class LoginComponent {
   //public message :string | undefined ;
   //public message :string ="";
   public message  ="";
+  public ok=false;
   //public message! : string  ;
 
   constructor(public loginService : LoginService){
@@ -24,8 +25,11 @@ export class LoginComponent {
    // this.message = "donnees saisies = " + JSON.stringify(this.login);
    this.loginService.postLogin$(this.login)
    .subscribe({
-      next: (loginResponse : LoginResponse)=>{ this.message = loginResponse.message},
-      error: (err)=>{console.log(err)}
+      next: (loginResponse : LoginResponse)=>{ this.message = loginResponse.message;
+                                               this.ok = loginResponse.status;
+                                               console.log(JSON.stringify(loginResponse));
+      },
+      error: (err)=>{console.log(JSON.stringify(err))}
      })
   }
 }

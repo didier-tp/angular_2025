@@ -8,5 +8,5 @@
     <input [(ngModel)]="login.roles" name="roles" required /> <br/>
     <input type="button" value="login" [disabled]="!formLogin.form.valid"
     (click)="onLogin()" /> <br/>
-    message: {{message}}
+    message: <span [style.color]=" ok?'green':'red' ">{{message}}</span>
 </form>
