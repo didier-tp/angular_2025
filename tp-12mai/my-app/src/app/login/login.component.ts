@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Login } from '../common/data/login';
+import { Login, LoginResponse } from '../common/data/login';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LoginService } from '../common/service/login.service';
 
@@ -21,6 +21,11 @@ export class LoginComponent {
   }
 
   public onLogin() {
-    this.message = "donnees saisies = " + JSON.stringify(this.login);
+   // this.message = "donnees saisies = " + JSON.stringify(this.login);
+   this.loginService.postLogin$(this.login)
+   .subscribe({
+      next: (loginResponse : LoginResponse)=>{ this.message = loginResponse.message},
+      error: (err)=>{console.log(err)}
+     })
   }
 }
