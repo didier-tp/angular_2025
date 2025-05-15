@@ -1,11 +1,12 @@
 import { NgIf, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
   selector: 'app-calculatrice',
-  imports: [FormsModule , NgIf , NgFor],
+  imports: [FormsModule, NgIf, NgFor],
   templateUrl: './calculatrice.component.html',
   styleUrl: './calculatrice.component.scss'
 })
@@ -13,10 +14,18 @@ export class CalculatriceComponent {
   a: number = 0;
   b: number = 0;
   res: number = 0;
-  modeChoisi ="simple"; //ou "sophistiquee"
+  modeChoisi = "simple"; //ou "sophistiquee"
 
-  listeRes : number[] = [];
-  montrerHisto : boolean = true;
+  listeRes: number[] = [];
+  montrerHisto: boolean = true;
+
+  constructor(route: ActivatedRoute) {
+    route.params.subscribe(
+      (params: Params) =>
+        //NB: { path: 'calculatrice/:mode', ... },
+        this.modeChoisi = params['mode']
+    );
+  }
 
   onCalculer(op: string) {
     switch (op) {
@@ -33,14 +42,14 @@ export class CalculatriceComponent {
   }
 
   //coordonnées relatives de la souris qui survole une div
-x:number=0;
-y:number=0;
-onMouseMove(evt : MouseEvent){
-let currentDiv : HTMLElement= <HTMLElement> evt.target;
-this.x = evt.pageX - currentDiv.offsetLeft;
-this.y = evt.pageY - currentDiv.offsetTop;
-}
-onMouseLeave(evt : MouseEvent){
-this.x=0; this.y=0;
-}
+  x: number = 0;
+  y: number = 0;
+  onMouseMove(evt: MouseEvent) {
+    let currentDiv: HTMLElement = <HTMLElement>evt.target;
+    this.x = evt.pageX - currentDiv.offsetLeft;
+    this.y = evt.pageY - currentDiv.offsetTop;
+  }
+  onMouseLeave(evt: MouseEvent) {
+    this.x = 0; this.y = 0;
+  }
 }
