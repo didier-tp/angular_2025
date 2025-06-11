@@ -43,9 +43,13 @@ ttc: {{ttc}} <br/>
 -->
 
 <ul>
-    @for( taux of listeCategoriePourTauxSel; track taux){
+    @for( taux of tauxPossibles; track taux){
        <li  (click)="onSelectTaux(taux)"
-            [class.selected]="taux == tauxSel">{{taux}}</li>
+            [class.selected]="taux==tauxSel">{{taux}}</li>
     }
 </ul>
+
+@for( c of listeCategoriePourTauxSel; track c){
+    {{c}} &nbsp;
+}
 
