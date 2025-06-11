@@ -6,6 +6,7 @@ import { BasicComponent } from './basic/basic.component';
 
 @Component({
   selector: 'app-root',
+  standalone : true,
   imports: [RouterOutlet, HeaderComponent,FooterComponent,BasicComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
