@@ -43,8 +43,9 @@ ttc: {{ttc}} <br/>
 -->
 
 <ul>
-    <li *ngFor="let taux of listeCategoriePourTauxSel"
-        (click)="onSelectTaux(taux)"
-        [class.selected]="taux == tauxSel">{{taux}}</li>
+    @for( taux of listeCategoriePourTauxSel; track taux){
+       <li  (click)="onSelectTaux(taux)"
+            [class.selected]="taux == tauxSel">{{taux}}</li>
+    }
 </ul>
 

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tva',
- imports: [FormsModule,NgFor],
+ imports: [FormsModule],
  //imports: [FormsModule,CommonModule],
   templateUrl: './tva.component.html',
   styleUrl: './tva.component.scss'
