@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class PreferencesService {
  
   private _couleurFondPreferee: string;
+  
   public get couleurFondPreferee() {
     return this._couleurFondPreferee;
   }
