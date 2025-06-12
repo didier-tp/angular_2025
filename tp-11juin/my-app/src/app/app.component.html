@@ -1,5 +1,10 @@
+<!--
 <app-header></app-header>
-<p> welcome to {{title}} </p>
+<app-header titre="titreEnDur"></app-header>
+-->
+<app-header [titre]="title"></app-header>
+
+<!-- <p> welcome to {{title}} </p> -->
 
 <!-- la balise speciale router-outlet affichera un composant
     lié à la route courante (welcome ou basic ou ...) -->
