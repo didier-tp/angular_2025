@@ -8,8 +8,8 @@ tauxTva:<select [(ngModel)]="tauxTvaPct"
                     <option [ngValue]="t">{{t}}%</option>
                 }
 </select> <br/>
-tva: {{tva }} <br/>
-ttc: {{ttc }} <br/>
+tva: {{tva | number:'1.0-2':'fr'}} <br/>
+ttc: {{ttc | toFixed:2 }} <br/>
 </div>
 
 <!--
