@@ -1,4 +1,6 @@
-<p class="entete"> header {{titre()}}
+<p class="entete"
+  [style.background-color]="preferencesService.couleurFondPreferee"
+> header {{titre()}}
     <a routerLink='/ngr-welcome'> welcome</a> &nbsp;
 <a routerLink='/ngr-basic'> basic</a> &nbsp;
 <a routerLink='/ngr-login'> login</a> &nbsp;
