@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, delay } from 'rxjs';
+import { Observable, of, delay, throwError } from 'rxjs';
 import { Devise } from '../data/devise';
 
 @Injectable({
@@ -28,6 +28,9 @@ export class DeviseService {
     let coeff = (codeDeviseSrc == codeDeviseTarget) ? 1 : Math.random();
     //coefficient aleatoire ici (simple simulation)
     let montantConverti = montant * coeff;
+    if(montant < 0)
+      return throwError(()=>new Error("montant négatif invalide"))
+    /*else*/
     return of(montantConverti) //version temporaire (cependant asynchrone)
       .pipe(
         delay(222) //simuler une attente de 222ms

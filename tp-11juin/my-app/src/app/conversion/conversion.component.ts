@@ -3,11 +3,11 @@ import { Devise } from '../common/data/devise';
 import { DeviseService } from '../common/service/devise.service';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { catchError, firstValueFrom, Observable, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-conversion',
-  imports: [FormsModule,NgFor,AsyncPipe],
+  imports: [FormsModule,AsyncPipe],
   templateUrl: './conversion.component.html',
   styleUrl: './conversion.component.scss'
 })
@@ -17,19 +17,31 @@ export class ConversionComponent {
   codeDeviseCible: string = "?";
   montantConverti: number = 0;
 
-  montantConvertiObservable! : Observable<number> 
 
   listeDevises: Devise[] = []; //à choisir dans liste déroulante.
 
   constructor(private _deviseService: DeviseService) { }
+
+  montantConvertiObservable! : Observable<number> 
+
+  message=""
 
   onConvertir() {
     this.montantConvertiObservable = 
         this._deviseService.convertir$(this.montant,
                                        this.codeDeviseSource,
                                         this.codeDeviseCible)
+                           .pipe(tap((resWithoutErr)=>{this.message=""}),
+                                 catchError((err)=>this.handleError(err)));
     //à afficher coté .html via {{ montantConvertiObservable | async }}
     //ça nécessite imports:[....,AsyncPipe]
+  }
+
+  private handleError(error: any): Observable<never> {
+    this.message="erreur de conversion:" + error;
+    console.log(this.message);
+    //return throwError(()=> new Error('Error ...'));
+    return throwError(()=> error);
   }
 
   onConvertirV1() {
@@ -58,11 +70,20 @@ export class ConversionComponent {
   }
   //ngOnInit() est automatiquement appelée par le framework après le constructeur
   //et après la prise en compte des injections et des éventuels @Input
-  ngOnInit(): void {
+  ngOnInitV1(): void {
     this._deviseService.getAllDevises$()
       .subscribe({
         next: (tabDev: Devise[]) => { this.initListeDevises(tabDev); },
         error: (err) => { console.log("error:" + err) }
       });
+  }
+
+  async  ngOnInit() {
+      try {
+        let tabDev = await firstValueFrom(this._deviseService.getAllDevises$());
+        this.initListeDevises(tabDev);
+    } catch (err) {
+      console.log(err);
+    }
   }
 }

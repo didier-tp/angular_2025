@@ -11,11 +11,11 @@ describe('CalculatriceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CalculatriceComponent,FormsModule],
+      imports: [CalculatriceComponent],
       providers: [ {
               provide: ActivatedRoute,
-              useValue: {  params: of({mode: 'simple'})
-            }}]
+              useValue: {  params: of({mode: 'simple'})}
+            }]
     })
     .compileComponents();
 

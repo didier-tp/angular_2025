@@ -20,11 +20,9 @@ export class CalculatriceComponent {
   montrerHisto: boolean = true;
 
   constructor(route: ActivatedRoute) {
-    if(route==null)return;
+    //NB: { path: 'calculatrice/:mode', ... }
     route.params.subscribe(
-      (params: Params) =>
-        //NB: { path: 'calculatrice/:mode', ... },
-        this.modeChoisi = params['mode']
+      (params: Params) => {this.modeChoisi = params['mode']}
     );
   }
 

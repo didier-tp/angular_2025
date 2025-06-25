@@ -3,14 +3,19 @@
 montant : <input [(ngModel)]="montant" /> <br/>
 
 code devise source : <select [(ngModel)]="codeDeviseSource" >
-<option *ngFor="let d of listeDevises">{{d.code}}</option>
+@for(d of listeDevises; track d.code){
+    <option>{{d.code}}</option>
+}
 </select> <br/>
 
 code devise cible : <select [(ngModel)]="codeDeviseCible" >
-<option *ngFor="let d of listeDevises">{{d.code}}</option>
+@for(d of listeDevises; track d.code){
+    <option>{{d.code}}</option>
+}
 </select> <br/>
 
 <input type="button" (click)="onConvertir()" value="convertir" /> <br/>
 
 <!-- montantConverti = {{montantConverti}} -->
-montantConverti = {{montantConvertiObservable | async }}
+montantConverti = {{montantConvertiObservable | async }} <br/>
+<span class="smallError">{{message}}</span>

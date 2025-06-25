@@ -1,13 +1,21 @@
 <div class="tva">
 <p>calcul de Tva</p>
-ht:<input [(ngModel)]="ht" (input)="onCalculerTvaTtc()"/> <br/>
-tauxTva:<select [(ngModel)]="tauxTvaPct"
+ht:<input [(ngModel)]="ht" name="ht" (input)="onCalculerTvaTtc()"/> <br/>
+tauxTva:<select name="tauxTvaPct" [(ngModel)]="tauxTvaPct"
                      (change)="onCalculerTvaTtc()">
-    <option *ngFor="let t of tauxPossibles" [ngValue]="t">{{t}}%</option>
+                @for(t of tauxPossibles; track t){
+                    <option  [ngValue]="t">{{t}}%</option>
+                }
 </select> <br/>
 <!-- <button (click)="onCalculerTvaTtc()">calculer</button> <br/>-->
-tva: {{tva | number:'1.0-2' : 'fr'}} <br/>
-ttc: {{ttc | toFixed:2}} <br/>
+
+<!--
+tva:{{tva | number:'1.0-2' : 'fr'}} <br/>
+ttc:{{ttc | toFixed:2}} <br/>
+-->
+
+tva: <span id="spanTva">{{tva}}</span> <br/>
+ttc: <span id="spanTtc">{{ttc}}</span> <br/>
 </div>
 <!--
 <p>V1 sans liste déroulante:</p>
