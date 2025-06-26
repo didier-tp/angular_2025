@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Login } from '../common/data/login';
 import { FormsModule, NgForm } from '@angular/forms';
+import { DeviseService } from '../common/service/devise.service';
 
 
 @Component({
@@ -10,6 +11,9 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+
+  deviseService = inject(DeviseService)
+  
   public login : Login = new Login();
 public message :string ="";
 public onLogin(){
