@@ -17,12 +17,14 @@ export class LoginComponent {
   
   public login : Login = new Login();
 public message :string ="";
+public ok:boolean =true
 
 public onLogin(){
    // this.message = "donnees saisies = " + JSON.stringify(this.login);
    this.loginService.postLogin$(this.login).subscribe(
     {
-      next: (loginResponse : LoginResponse) => {  this.message = loginResponse.message},
+      next: (loginResponse : LoginResponse) => {  this.message = loginResponse.message;
+                                                 this.ok = loginResponse.status},
       error: (err) => { console.log(err) }
     }
    )
