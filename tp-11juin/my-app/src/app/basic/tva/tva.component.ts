@@ -1,5 +1,5 @@
 import { CommonModule, DecimalPipe, NgFor, NgIf, PercentPipe } from '@angular/common';
-import { Component, Signal, signal , computed } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ToFixedPipe } from '../../common/pipe/to-fixed.pipe';
 
@@ -12,12 +12,33 @@ import { ToFixedPipe } from '../../common/pipe/to-fixed.pipe';
   styleUrl: './tva.component.scss'
 })
 export class TvaComponent {
-  ht : Signal<number> = signal(0);
-  tauxTvaPct : Signal<number> = signal(20);
-  tva =computed(()=> this.ht() * this.tauxTvaPct() / 100.0);
-  ttc =computed(()=> this.ht() * (1 + this.tauxTvaPct() / 100.0));
+  ht : number = 0;
+  tauxTvaPct : number = 20;
+  tva : number = 0;
+  ttc : number = 0;
 
   tauxPossibles = [ 5, 10, 20];
 
+  onCalculerTvaTtc(){
+    this.tva = this.ht * this.tauxTvaPct/100;
+    this.ttc = Number(this.ht) + this.tva;
+  }
+
+mapTauxCategorieProd= new Map<number,string[]>();
+
+tauxSel : number | undefined = undefined; //taux sélectionné
+
+listeCategoriePourTauxSel : string[]  = [];
+
+constructor(){
+this.mapTauxCategorieProd.set(20 , [ "services" ,"outils" , "objets"]);
+this.mapTauxCategorieProd.set(10 , [ "transports" ,"hotels" , "restaurants" , "spectacles" , "médicaments"]);
+this.mapTauxCategorieProd.set(5 , [ "aliments" ,"énergies" , "livres" ]);
 }
 
+onSelectTaux(taux:number){
+         this.tauxSel=taux;
+         this.listeCategoriePourTauxSel=this.mapTauxCategorieProd.get(taux)??[];
+}
+
+}

@@ -1,0 +1,15 @@
+<div class="tva">
+<p>calcul de Tva</p>
+
+ht:<input [(ngModel)]="ht" name="ht" /> <br/>
+tauxTva:<select  name="tauxTvaPct" [(ngModel)]="tauxTvaPct" >
+               @for(t of tauxPossibles; track t){
+                    <option [ngValue]="t">{{t}}%</option>
+                }
+</select> <br/>
+<!-- tva: {{tva() | number:'1.0-2':'fr'}} <br/> -->
+tva: <span id="spanTva">{{tva()}}</span>
+ttc: {{ttc() | toFixed:2 }} <br/>
+</div>
+
+
