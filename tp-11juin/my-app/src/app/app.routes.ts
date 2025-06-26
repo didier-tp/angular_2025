@@ -6,6 +6,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { ConversionComponent } from './conversion/conversion.component';
 import { CalculatriceComponent } from './basic/calculatrice/calculatrice.component';
 import { TvaComponent } from './basic/tva/tva.component';
+import { authGuard } from './common/guard/auth.guard';
 
 export const routes: Routes = [
     { path: 'ngr-welcome', component: WelcomeComponent },
@@ -14,10 +15,11 @@ export const routes: Routes = [
     { path: 'ngr-basic', component: BasicComponent ,
         children: [
             { path: 'tva', component: TvaComponent },
-            { path: 'calculatrice', component: CalculatriceComponent },
+            { path: 'calculatrice/:mode', component: CalculatriceComponent },
             { path: '', redirectTo: 'tva', pathMatch: 'prefix'}
             ]
     },
     { path: 'ngr-reservation', component: ReservationComponent },
-     { path: 'ngr-conversion', component: ConversionComponent }
+     { path: 'ngr-conversion', component: ConversionComponent ,
+                               canActivate : [ authGuard] }
 ];
