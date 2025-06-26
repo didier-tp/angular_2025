@@ -1,10 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TvaComponent } from './tva.component';
-import { signal } from '@angular/core';
-
-//NB: cet import additionnel est nécessaire pour fixer directement la valeur d'un signal
-//depuis une classe de test:
-import { SIGNAL, signalSetFn } from '@angular/core/primitives/signals';
 
 
 describe('TvaComponent', () => {
@@ -26,20 +21,11 @@ describe('TvaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  //NB: cette fonction de test fixe direcment la valeur de certains signaux en mémoire 
-  // ce qui n'est pas toujours utile si on le fait indirectement comme conséquence d'une saisie coté vue
+
   it('tva(200,20)=40 from model', () => {
-    //component.ht.set(200) // DOES NOT COMPILE IN test class !!!!
-    
-    signalSetFn(<any>component.ht[SIGNAL], 200);
-    //signalSetFn(<any>component.nomDesignal[SIGNAL], nouvelleValeur); permet de chnger la valeur d'un signal
-    //et ça fonctionne dans une classe de test .
-
-    //component.tauxTvaPct.set(20) // DOES NOT COMPILE IN test class !!!!
-    signalSetFn(<any>component.tauxTvaPct[SIGNAL], 20);
-
-    //NB: il existe aussi fixture.componentRef.setInput('signal-input-name', 'value'); 
-    
+    component.ht = 200
+    component.tauxTvaPct = 20;
+    component.onCalculerTvaTtc();//à ne pas oublier d'appeler si pas de dispatchEvent
     fixture.detectChanges();
     const compNativeElt = fixture.debugElement.nativeElement;
     let spanTvaElt = compNativeElt.querySelector('#spanTva');
@@ -47,9 +33,8 @@ describe('TvaComponent', () => {
     expect(Number(spanTvaElt.innerText)).toBeCloseTo(40, 2);
     // .toBeCloseTo(expectedValue,precision_as_nb_decimal)
   });
-  
 
-  it('tva(200,10)=20 from IHM', () => {
+  it('tva(200,10)=220 from IHM', () => {
     //Saisies de valeurs (via native_elements and DOM api):
     const compNativeElt = fixture.debugElement.nativeElement;
     let htInputElt = compNativeElt.querySelector("input[name='ht']");
@@ -79,16 +64,13 @@ describe('TvaComponent', () => {
     tauxTvaPctSelectElt.dispatchEvent(new Event('change'));
     fixture.detectChanges();
     //Vérifications des valeurs saisies et calculées dans le modèle:
-    //NB: to read and check signal value, same syntax as in .html : as a function with ()
-    expect(Number(component.ht())).toBe(200);
-    expect(component.tauxTvaPct()).toBe(10);
-    expect(component.ttc()).toBeCloseTo(220, 2);
+    expect(Number(component.ht)).toBe(200);
+    expect(component.tauxTvaPct).toBe(10);
+    expect(component.ttc).toBeCloseTo(220, 2);
     //Vérifications des valeurs calculées dans la vue (template html):
-    let spanTvaElt = compNativeElt.querySelector('#spanTva');
-    console.log("from IHM, res:" + spanTvaElt.innerText);
-    expect(Number(spanTvaElt.innerText)).toBeCloseTo(20, 2);
+    let spanTtcElt = compNativeElt.querySelector('#spanTva');
+    console.log("from IHM, res:" + spanTtcElt.innerText);
+    expect(Number(spanTtcElt.innerText)).toBeCloseTo(20, 2);
   });
 
 });
-
-//ng test --include=**/tva.component.spec.ts
