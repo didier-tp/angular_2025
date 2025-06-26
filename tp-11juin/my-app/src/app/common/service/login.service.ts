@@ -14,7 +14,7 @@ export class LoginService {
   constructor(private _http: HttpClient) { }
 
   public postLogin$(login: Login): Observable<LoginResponse>{
-    let url = this.baseUrl + "public/auth" 
+    let url = this.baseUrl + "/public/auth" 
     return this._http.post<LoginResponse>(url,login)
   }
 }
