@@ -40,4 +40,10 @@ private _apiBaseUrl ="tp/devise-api/v1";
         map((res: ConvertRes) => res.result)
       );
   }
+
+  putDevise$(d :Devise): Observable<Devise>{
+//const url = `${this.publicOrPrivateBaseUrl}/devises/${d.code}?v=true`;
+const url = `${this._apiBaseUrl}/private/devises/${d.code}?v=true`;
+return this._http.put<Devise>(url,d /*input envoyé au serveur*/);
+}
 }

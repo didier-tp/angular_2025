@@ -24,6 +24,7 @@ public onLogin(){
    this.loginService.postLogin$(this.login).subscribe(
     {
       next: (loginResponse : LoginResponse) => {  this.message = loginResponse.message;
+                                                  sessionStorage.setItem("access_token",loginResponse.token);
                                                  this.ok = loginResponse.status},
       error: (err) => { console.log(err) }
     }
