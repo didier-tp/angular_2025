@@ -3,7 +3,7 @@ import { TvaComponent } from './tva.component';
 import { signal } from '@angular/core';
 
 //NB: cet import additionnel est nécessaire pour fixer directement la valeur d'un signal
-//depuis une classe de test:
+//qui est de type Signal<number> mais pas WritableSignal<number> depuis une classe de test:
 import { SIGNAL, signalSetFn } from '@angular/core/primitives/signals';
 
 
@@ -29,16 +29,15 @@ describe('TvaComponent', () => {
   //NB: cette fonction de test fixe direcment la valeur de certains signaux en mémoire 
   // ce qui n'est pas toujours utile si on le fait indirectement comme conséquence d'une saisie coté vue
   it('tva(200,20)=40 from model', () => {
-    //component.ht.set(200) // DOES NOT COMPILE IN test class !!!!
+    component.ht.set(200) // DOES NOT COMPILE IN test class if ht de type Signal<number> (not WritableSignal<number>)!!!!
     
-    signalSetFn(<any>component.ht[SIGNAL], 200);
+    //signalSetFn(<any>component.ht[SIGNAL], 200);
     //signalSetFn(<any>component.nomDesignal[SIGNAL], nouvelleValeur); permet de chnger la valeur d'un signal
-    //et ça fonctionne dans une classe de test .
+    //même s'il manque la partie "Writable" et ça fonctionne dans une classe de test .
 
-    //component.tauxTvaPct.set(20) // DOES NOT COMPILE IN test class !!!!
-    signalSetFn(<any>component.tauxTvaPct[SIGNAL], 20);
+    component.tauxTvaPct.set(20) // DOES NOT COMPILE IN test class !!!!
+    //signalSetFn(<any>component.tauxTvaPct[SIGNAL], 20);
 
-    //NB: il existe aussi fixture.componentRef.setInput('signal-input-name', 'value'); 
     
     fixture.detectChanges();
     const compNativeElt = fixture.debugElement.nativeElement;
