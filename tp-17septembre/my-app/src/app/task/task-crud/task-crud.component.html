@@ -1,0 +1,10 @@
+<h3>Select and Edit Tasks</h3>
+<app-generic-selector 
+      [(entities)]="taskList"
+      [mainFieldNames]="mainTaskFieldNames"
+      [(selectedEntity)]="selectedTask"
+      (selectedEntityChange)="onSelectedTaskChange()" />
+<hr/>
+<!-- <app-task-editor [(task)]="selectedTask" /> -->
+<app-task-editor [(task)]="tempTask"
+                 (taskChange)="onTaskChanged()" />

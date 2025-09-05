@@ -1,0 +1,11 @@
+<div [style.display]="displayMode()"
+     [style.background]="bgColor()">
+    <p>my-drawer with form for entityName={{entityName()}}</p>
+    <p>...</p>
+    <p>...</p>
+    @if(myContextService.currentContext().mode=="MODE_EDITION"){
+        <button>Update</button>
+    }@else{
+        <button>Save</button>
+    }
+</div>

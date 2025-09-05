@@ -1,0 +1,8 @@
+<div class="my-switch-class">
+    <app-actions-header (actionClick)="onActionClick($event)"
+                    [actionsList]="myActionsList"/>
+    <p>chosenActionId={{chosenActionId}} </p> 
+    <p>currentContext: {{ myContextService.currentContext() | json}} </p> 
+    <app-my-drawer></app-my-drawer> 
+</div>
+              

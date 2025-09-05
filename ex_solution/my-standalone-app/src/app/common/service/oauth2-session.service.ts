@@ -60,6 +60,9 @@ export class OAuth2SessionService {
       scope: 'openid profile resource.read resource.write resource.delete',
   
       showDebugInformation: true,
+
+      //strictDiscoveryDocumentValidation: false (may be http different of https or ...)
+      //strictDiscoveryDocumentValidation: false
     };
     this.oauthService.configure(authCodeFlowConfig);
     this.oauthService.oidc = true; // ID_Token
@@ -101,6 +104,12 @@ export class OAuth2SessionService {
       if (claims) this._userInSession.username= claims.preferred_username + "("+ claims.name + ")";
 
       this._sessionService.userInSession$=this._userInSession;
+
+      let access_token = this.oauthService.getAccessToken();
+      let decode_access_token = atob(access_token.split('.')[1])
+      //console.log("access_token=" + access_token);
+      console.log("decode_access_token=" + decode_access_token);
+      //NB:may be { ... , "realm_access":{"roles":["MANAGE_RW",....]}} in decode_access_token
 
       /*
       //not necessary with popup and silent-refresh

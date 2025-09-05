@@ -1,0 +1,14 @@
+<div id="my-task-editor">
+    <!-- task = {{task()|json}} -->
+    @if(task()){
+        title: {{task()?.title}} <br/>
+        request: {{task()?.taskRequest}} <br/>
+        response: <input [(ngModel)]="task()!.taskResponse" ><br/>
+        <button (click)="onDoTask()">DO</button>&nbsp;
+        <button (click)="onUnDoTask()">UNDO</button>&nbsp;
+        <!-- <button (click)="onDeleteTask()">DELETE</button>&nbsp; -->
+    }
+</div>
+
+
+
