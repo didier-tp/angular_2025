@@ -8,4 +8,5 @@
 <hr/>
 <!-- <app-task-editor [(task)]="selectedTask" /> -->
 <app-task-editor [(task)]="tempTask"
-                 (taskChange)="onTaskChanged()" />
+                 (taskChange)="onTaskChanged()"
+                 (askedAction)="onAskedAction($event)" />

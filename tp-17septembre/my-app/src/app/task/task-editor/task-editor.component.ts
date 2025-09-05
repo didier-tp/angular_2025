@@ -1,5 +1,5 @@
 import { CommonModule, JsonPipe } from '@angular/common';
-import { Component, model } from '@angular/core';
+import { Component, model, output } from '@angular/core';
 import { cloneTask, Task } from '../task';
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TaskEditorComponent {
     task = model<Task|null>(null)
+    askedAction=output<string>();
 
     onDoTask(){
         this.task()!.state="done"; //task instance not changed , model signal not changed !!!
@@ -24,8 +25,8 @@ export class TaskEditorComponent {
        this.task.set(cloneTask(this.task()!))
     }
 
-    /*
+   
      onDeleteTask(){
-      
-    }*/
+        this.askedAction.emit("DELETE");
+    }
 }

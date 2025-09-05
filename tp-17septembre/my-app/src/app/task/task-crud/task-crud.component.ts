@@ -53,4 +53,21 @@ export class TaskCrudComponent {
        copyValuesOfTask(this.tempTask()!,this.selectedTask()!)
     }
  }
+
+ onAskedAction(action:string){
+   if(action=="DELETE"){
+      console.log("DELETE action asked")
+      this.removeEltInList(this.selectedTask(), this.taskList())
+      this.selectedTask.set(null)
+      this.tempTask.set(null)
+   }
+ }
+
+ removeEltInList(elt:any,list:any[]){
+    const n = list.length;
+    for(let i=n-1;i>=0;i--){
+      if(list[i]==elt)
+         list.splice(i,1)
+    }
+ }
 }
