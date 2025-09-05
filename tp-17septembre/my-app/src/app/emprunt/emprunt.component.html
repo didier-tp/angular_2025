@@ -2,15 +2,16 @@
 montant=<input name="montant" [(ngModel)]="montant" /> <br/>
 tauxInteretAnnuel=<input name="tauxInteretAnnuel" 
      [(ngModel)]="tauxInteretAnnuelPct" /> (en %) <br/>
-<!--     
+    
 durée (nbMois)=<input name="nbMois" [(ngModel)]="nbMois" /><br/>
--->
 
+<!--
 durée (via sélection) : <select [(ngModel)]="nbMois" name="selDuree" >
     @for(d of dureesSelectionnables; track d.nbMois){
        <option [ngValue]="d.nbMois">{{d.label}}</option>
     }
 </select><br/>
+-->
 
 <hr/>
 mensualite=<span id="spanMensualite">{{mensualite()}}</span> <br/>

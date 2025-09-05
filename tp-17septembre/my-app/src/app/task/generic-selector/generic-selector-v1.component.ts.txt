@@ -1,0 +1,37 @@
+import { CommonModule } from '@angular/common';
+import { Component, input, model, output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-generic-selector-v1',
+  imports: [CommonModule,FormsModule],
+  templateUrl: './generic-selector-v1.component.html',
+  styleUrl: './generic-selector-v1.component.scss'
+})
+export class GenericSelectorV1Component {
+    entities = input<object[]>([])
+    mainFieldNames = input<string[]>([])//pour version tableau
+    selectedEntity :object|null = null;
+    selectedEntityEvent = output<object>();
+
+   //pour version tableau:
+    objectEssentialValuesArray(obj:object):any[]{
+      let arrayOfPropKeys = this.mainFieldNames();
+      let valuesArray = [];
+      for(let key of arrayOfPropKeys){
+      valuesArray.push(Reflect.get(obj,key));
+      }
+      return valuesArray;
+   }
+
+   //pour version tableau:
+   onSelectRow(obj:object){
+    this.selectedEntity=obj;
+    this.selectedEntityEvent.emit(this.selectedEntity);
+   }
+
+   //pour version liste:
+   onSelectedEntityChange(){
+       this.selectedEntityEvent.emit(this.selectedEntity!);
+   }
+}

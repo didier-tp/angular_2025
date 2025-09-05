@@ -1,10 +1,11 @@
-<!--
-<select size="6" [(ngModel)]="selectedEntity">
+<!-- <p>generic-selector works!</p> -->
+
+<select size="6" [(ngModel)]="selectedEntity" (ngModelChange)="onSelectedEntityChange()">
     @for(e of entities(); track e){
        <option [ngValue]="e">{{e|json}}</option>
     }
 </select>
--->
+
 
 <table>
     <thead><tr>
@@ -14,7 +15,7 @@
     <tr></thead>
     <tbody>
         @for(e of entities(); track e){
-            <tr (click)="onSelectRow(e)" [class.selected]="e==selectedEntity()">
+            <tr (click)="onSelectRow(e)" [class.selected]="e==selectedEntity">
                 @for(fieldVal of objectEssentialValuesArray(e); track fieldVal){
                     <td>{{fieldVal}}</td>
                 }
@@ -22,4 +23,3 @@
         }
     </tbody>
 </table>
-

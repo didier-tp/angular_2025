@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './generic-selector.component.scss'
 })
 export class GenericSelectorComponent {
-    entities = model<object[]>([])
+    entities = input<object[]>([])
     mainFieldNames = input<string[]>([])
     selectedEntity = model<object|null>();
 

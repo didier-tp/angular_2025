@@ -35,7 +35,7 @@ describe('EmpruntComponent', () => {
       expect(sMensualite).toContain('266.21');
 });
 
-/*
+
   it('mensualite(montant=15000,taux=2.5,nbMois=60)==266.21 environ from IHM', () => {
       const compNativeElt = fixture.debugElement.nativeElement;
       setValueInInput(compNativeElt,"input[name='montant']","15000")
@@ -50,9 +50,9 @@ describe('EmpruntComponent', () => {
       //expect(sMensualite).toContain('266.21');
       expect(Number(sMensualite)).toBeCloseTo(266.21,2)
 });
-*/
 
 
+/*
 it('mensualite(montant=15000,taux=2.5,select nbMois=60)==266.21 environ from IHM', () => {
       const compNativeElt = fixture.debugElement.nativeElement;
       setValueInInput(compNativeElt,"input[name='montant']","15000")
@@ -69,6 +69,7 @@ it('mensualite(montant=15000,taux=2.5,select nbMois=60)==266.21 environ from IHM
       //expect(sMensualite).toContain('266.21'); //à adapter si affichage ajusté via éventuel pipe 
       expect(Number(sMensualite)).toBeCloseTo(266.21,2)
 });
+*/
 
 });
 

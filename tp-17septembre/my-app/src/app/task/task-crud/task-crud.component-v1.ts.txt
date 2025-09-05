@@ -2,10 +2,11 @@ import { Component, model, signal } from '@angular/core';
 import { cloneTask, copyValuesOfTask, Task } from '../task';
 import { GenericSelectorComponent } from '../generic-selector/generic-selector.component';
 import { TaskEditorComponent } from '../task-editor/task-editor.component';
+import { GenericSelectorV1Component } from '../generic-selector-v1/generic-selector-v1.component';
 
 @Component({
   selector: 'app-task-crud',
-  imports: [GenericSelectorComponent,TaskEditorComponent],
+  imports: [GenericSelectorComponent,GenericSelectorV1Component,TaskEditorComponent],
   templateUrl: './task-crud.component.html',
   styleUrl: './task-crud.component.scss'
 })
@@ -27,14 +28,6 @@ export class TaskCrudComponent {
   tempTask = signal<Task|null>(null);
 
   /*
- ngOnInit(){
-    const firstTask = this.initialTaskList[0];
-    this.selectedTask.set(firstTask)
-    this.tempTask.set(cloneTask(this.selectedTask()!))
- }
-  */
-
-  /*
   changeSelectionEffect = effect( ()=>{
     console.log("GenericCrudComponent , changed selectedTask=" + JSON.stringify(this.selectedTask()))
   })
@@ -42,6 +35,12 @@ export class TaskCrudComponent {
 
  onSelectedTaskChange(){
   console.log("GenericCrudComponent , changed selectedTask=" + JSON.stringify(this.selectedTask()))
+  this.tempTask.set(cloneTask(this.selectedTask()!))
+ }
+
+  onSelectedEntity(taskOfEvent:object){
+  this.selectedTask.set(<Task> taskOfEvent)
+  console.log("GenericCrudComponent , received SelectEntity event,  selectedTask=" + JSON.stringify(this.selectedTask()))
   this.tempTask.set(cloneTask(this.selectedTask()!))
  }
 
