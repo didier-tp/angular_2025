@@ -5,7 +5,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-calculatrice',
-  imports: [FormsModule, NgIf, NgFor],
+  imports: [FormsModule],
   templateUrl: './calculatrice.component.html',
   styleUrl: './calculatrice.component.scss'
 })

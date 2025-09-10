@@ -3,10 +3,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
+//   imports: [... , NgIf, NgFor], et *ngIf , *ngFor moins bien que @if et @for
+
 @Component({
   selector: 'app-calculatrice',
   standalone: true,
-  imports: [FormsModule, JsonPipe , NgIf, NgFor],
+  imports: [FormsModule, JsonPipe],
   templateUrl: './calculatrice.component.html',
   styleUrl: './calculatrice.component.scss'
 })

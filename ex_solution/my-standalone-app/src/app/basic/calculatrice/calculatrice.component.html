@@ -15,10 +15,13 @@ res= <span id="spanRes" [style.font-weight]="res>0?'bold':'normal'"
            [class.negatif]="res<0">{{res}}</span>
 </div>    
 <input type="checkbox" [(ngModel)]="montrerHisto" /> voir l'historique des calculs<br/>
-    <ul *ngIf="montrerHisto">
-        <li *ngFor="let h of historiqueCalculs">{{h}}</li>
+   @if(montrerHisto){
+   <ul >
+     @for(h of historiqueCalculs; track h){
+        <li >{{h}}</li>
+     }
     </ul>    
-           
+   }        
 <hr/>
     <div class="c2" (mousemove)="onMouseMove($event)"
            (mouseout)="onMouseLeave($event)">

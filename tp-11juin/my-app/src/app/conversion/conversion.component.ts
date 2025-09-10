@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Signal, signal } from '@angular/core';
 import { Devise } from '../common/data/devise';
 import { DeviseService } from '../common/service/devise.service';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { catchError, firstValueFrom, Observable, tap, throwError } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-conversion',
@@ -23,6 +24,7 @@ export class ConversionComponent {
   constructor(private _deviseService: DeviseService) { }
 
   montantConvertiObservable!: Observable<number>
+
 
   message = ""
 

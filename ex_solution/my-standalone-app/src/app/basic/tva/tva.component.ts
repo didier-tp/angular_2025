@@ -2,15 +2,15 @@ import { Component, inject } from '@angular/core';
 import { CalculService } from '../../common/service/calcul.service';
 import { FormsModule } from '@angular/forms';
 import { DecimalPipe, NgFor, NgIf } from '@angular/common';
-import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
 import { ToFixedPipe } from '../../common/pipe/to-fixed.pipe';
-registerLocaleData(localeFr);
+
+
+//   imports: [... , NgIf, NgFor], et *ngIf , *ngFor moins bien que @if et @for
 
 @Component({
   selector: 'app-tva',
   standalone: true,
-  imports: [FormsModule, NgIf , NgFor , DecimalPipe , ToFixedPipe],
+  imports: [FormsModule, DecimalPipe , ToFixedPipe],
   templateUrl: './tva.component.html',
   styleUrl: './tva.component.scss'
 })

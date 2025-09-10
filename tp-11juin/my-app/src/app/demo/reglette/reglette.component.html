@@ -1,0 +1,13 @@
+
+     <div class="reglette" (click)="onInternalCurseur($event)"
+          [class.degrade_bleu]="gradient()"
+          [style.width.px]="width()">
+          
+           <input type="checkbox" [(ngModel)]="gradient" 
+            (click)="$event.stopPropagation()" />with gradient 
+          <!--
+            <input type="checkbox" (click)="$event.stopPropagation()"
+              [checked]="gradient()" (change)="onCheckedChange()" />with gradient 
+          -->
+     </div>
+

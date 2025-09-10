@@ -17,7 +17,7 @@ code devise cible : <select [(ngModel)]="codeDeviseCible" >
 <input type="button" (click)="onConvertir()" value="convertir" /> <br/>
 
 <!-- montantConverti = {{montantConverti}} -->
-montantConverti = {{montantConvertiObservable | async }} <br/>
+montantConverti (observable) = {{montantConvertiObservable | async }} <br/>
 <span class="smallError">{{message}}</span>
 
 <hr/>
