@@ -13,11 +13,13 @@ import jakarta.annotation.PostConstruct;
 public class CoordinateurAvecInjectionParConstructeur {
 
 
-	private MonAfficheur monAfficheur; //référence vers afficheur à injecter
+	private final MonAfficheur monAfficheur; //référence vers afficheur à injecter
 	
 	private final MonCalculateur monCalculateur;//référence vers calculateur à injecter
 	
-
+    public CoordinateurAvecInjectionParConstructeur(){
+		this.monAfficheur=null; this.monCalculateur=null;
+	}
 
 
 	public void calculerEtAfficher() {
