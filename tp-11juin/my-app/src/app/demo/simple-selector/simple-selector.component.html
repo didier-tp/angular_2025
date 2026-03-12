@@ -1,0 +1,8 @@
+<div id="mySimpleSelector">
+<h3>{{title()}}</h3>
+<ul>
+    @for(v of values(); track v){
+        <li (click)="onInternalChoice(v)" [class.selected]="v==choix()">{{v}}</li>
+    }
+</ul>
+</div>

@@ -1,0 +1,34 @@
+<div class="c1">
+    <h3>calculatrice angular</h3>
+    <label>a :</label> <input type="number" [(ngModel)]="a" name="a"> <br>
+    <label>b :</label> <input type="number" [(ngModel)]="b" name="b"> <br>
+    <label>operation :</label>
+    <input type="button" value="+" (click)="onCalculer('+')" > &nbsp;
+    <input type="button" value="-" (click)="onCalculer('-')" > &nbsp;
+    <input type="button" value="*" (click)="onCalculer('*')" [hidden]="modeChoisi=='simple'">
+    <br>
+    <label>resultat:</label>
+ <span  [style.font-weight]="res>0?'bold':'normal'" [class.negatif]="res<0" 
+        id="spanRes">{{res}}</span> <br>
+    <input type="checkbox" [(ngModel)]="montrerHisto"/> montrerHistorique <br/>
+   <!--
+    <ul *ngIf="montrerHisto">
+        <li *ngFor="let r of listeRes">{{r}}</li>
+    </ul>
+    -->
+    @if(montrerHisto){
+       <ul>
+        @for(r of listeRes;track r;let idx = $index){
+            <li>{{idx}} - {{r}}</li>
+        }
+       </ul> 
+    }
+    <hr>
+
+    <hr>
+<div class="c2" (mousemove)="onMouseMove($event)"
+                (mouseout)="onMouseLeave($event)">
+Zone à survoler à la souris .<br>
+x={{x}} , y={{y}}
+</div>
+</div>

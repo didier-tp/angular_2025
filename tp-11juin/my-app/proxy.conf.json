@@ -1,0 +1,6 @@
+{ "/tp/standalone-login-api" : { "secure" : false , "changeOrigin" : true,
+"target" : "https://www.d-defrance.fr/" } ,
+
+"/tp/devise-api" : { "secure" : false , "changeOrigin" : true,
+"target" : "https://www.d-defrance.fr/" }
+}

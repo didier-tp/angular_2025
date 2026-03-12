@@ -1,0 +1,28 @@
+https://www.d-defrance.fr/tp/devise-api/v1/public/devises (pas securisé)  code/name/change
+https://www.d-defrance.fr/tp/devise-api/v1/private/devises (securisé)
+https://www.d-defrance.fr/tp/tp-api-html pour éventuellement explorer
+
+https://www.d-defrance.fr/tp/standalone-login-api/v1/public/auth  username/password , username,status,message,token,scope
+(ex: https://github.com/didier-mycontrib/tp-app)
+
+https://www.d-defrance.fr/tp/devise-api/v1/public/convert?source=EUR&target=USD&amount=50
+
+Test pre-prod sans SSR:
+======================
+http-server --proxy https://www.d-defrance.fr -c-1 dist/my-app
+ou bien
+http-server --proxy https://www.d-defrance.fr -c-1 dist/my-app/browser
+avec si besoin 
+ng build --ssr=false --prerender=false
+
+
+
+Anciennes versions des URL:
+--------------------------
+https://www.d-defrance.fr/tp/devise-api/public/devise (pas securisé)  code/name/change
+https://www.d-defrance.fr/tp/devise-api/private/devise (securisé)
+
+https://www.d-defrance.fr/tp/standalone-login-api/public/auth  username/password , username,status,message,token,scope
+(ex: https://github.com/didier-mycontrib/tp-app)
+
+https://www.d-defrance.fr/tp/devise-api/public/convert?source=EUR&target=USD&amount=50

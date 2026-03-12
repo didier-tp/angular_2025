@@ -1,0 +1,39 @@
+<p>login</p>
+
+<form #formLogin="ngForm">
+
+    <div class="f-form-group-wrap">
+        <label class="f-align">username:</label>
+        <div class="f-align">
+            <input [(ngModel)]="login.username" class="f-max-size" name="username" required pattern="^[a-zA-Z].+"
+                #usernameCtrl="ngModel" />
+            <!-- <span [hidden]="usernameCtrl.valid">le username doit commencer par une lettre et être suivi d'au moins un autre caractère</span> -->
+            <!-- <span [hidden]="usernameCtrl.valid">{{usernameCtrl.errors | json}}</span> -->
+        </div>
+    </div>
+
+    <div class="f-form-group-wrap">
+        <label class="f-align">password:</label>
+        <div class="f-align">
+            <input [(ngModel)]="login.password" class="f-max-size" name="password" required minlength="3" />
+        </div>
+    </div>
+
+    <div class="f-form-group-wrap">
+        <label class="f-align">roles:</label>
+        <div class="f-align">
+            <input [(ngModel)]="login.roles" class="f-max-size" name="roles" required />
+        </div>
+    </div>
+    <div class="f-form-group-wrap">
+        <label class="f-align"></label>
+        <div class="f-align">
+            <button (click)="onLogin()"  [disabled]="!formLogin.form.valid">submit/login
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<span [style.color]="status?'green':'red'">{{message}}</span>
+<br/>

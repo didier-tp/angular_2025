@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-sm-5" >
+      <div class="card">
+       <div class="card-header text-white bg-primary">Liste des devises</div>
+       <div class="card-body">
+       <table class="table table-bordered">
+           <tr><th>code</th><th>name</th><th>change</th></tr>
+           <!-- A COMPLETER EN TP -->
+           <tr *ngFor="let d of tabDevises ; let i=index"
+               (click)="onSelectDevise(d)">
+            <td>{{d.code}}</td><td>{{d.name}}</td><td>{{d.change}}</td>
+        </tr>
+       </table> <!-- end of table -->
+       message: <b>{{message}}</b>
+       </div> <!-- end of card-body -->
+      </div><!-- end of card -->
+     </div> <!-- end of col-sm-5 -->
+     <div class="col-sm-7" >
+       <div class="card">
+       <div class="card-header text-white bg-primary">devise selectionnée ({{mode}})</div>
+       <div class="card-body">
+       <form #formDevise="ngForm">   <!-- A COMPLETER/AMELIORER EN TP -->
+           <div class="row form-group">
+           <label class="col-sm-3 text-sm-end form-label">code:</label>
+           <div class="col-sm-9">
+               <input name="code" class="form-control  mb-1"  required minlength="3" />
+           </div>
+       </div> <!-- end of row form-group -->
+       <div class="row form-group">
+               <label class="col-sm-3 text-sm-end form-label">name:</label>
+               <div class="col-sm-9">
+                   <input name="nom" class="form-control  mb-1"  required />
+               </div>
+           </div> <!-- end of row form-group -->
+           <div class="row form-group">
+               <label class="col-sm-3 text-sm-end form-label">change:</label>
+               <div class="col-sm-9">
+               <input name="change" [(ngModel)]="deviseTemp.change"
+               type="number" class="form-control mb-1"  required />
+               </div>
+           </div><!-- end of row form-group -->
+           <div class="row form-group">
+               <div class="col-sm-9 offset-sm-3">
+                   <button class="btn-primary" (click)="onUpdate()"> update </button> &nbsp;
+                   <button  class="btn-primary"> new </button>  &nbsp;
+                   <button class="btn-primary"> add </button> &nbsp;
+                   <button  class="btn-danger"> delete </button> 
+               </div> 
+           </div><!-- end of row form-group -->
+       </form><!-- end of form -->
+       </div> <!-- end of card-body -->
+      </div><!-- end of card -->
+     </div> <!-- end of col-sm-7 -->
+   </div><!-- end of main row -->

@@ -1,0 +1,7 @@
+
+/* styles applied directly to the whole current component only (ex: app-root element) */
+:host {
+    //border: 2px solid red;
+    display: block;
+    padding: 5px;
+}

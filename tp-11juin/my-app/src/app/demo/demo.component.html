@@ -1,0 +1,35 @@
+
+<app-seuil></app-seuil>
+<p>nbProd : {{nbProdPrixInferieurSeuilMaxi}}</p>
+<hr/>
+<app-list-prod></app-list-prod>
+<hr/>
+
+<app-reglette width="200" 
+              (changeEvent)="onChangeCurseur($event)"
+              [(gradient)]="avecDegradeCouleur"
+              (gradientChange)="onGradientChange()" ></app-reglette>
+        
+curseur = {{valeurCurseur}} <br/>
+<input type="checkbox" [(ngModel)]="avecDegradeCouleur" /> avecDegradeCouleur 
+<hr/>
+<!-- v1 (avec choix en output() )-->
+<!--
+<app-simple-selector 
+   title="choix couleur" 
+   [values]="[ 'red' ,'green','blue' ]"
+   (choix)="onChoixCouleur($event)"></app-simple-selector> <br/>
+couleurChoisie = {{couleurChoisie}}
+-->
+<!-- v2(avec choix en model() )-->
+
+<app-simple-selector 
+   title="choix couleur" 
+   [values]="[ 'red' ,'green','blue' ]"
+   [(choix)]="couleurChoisie"
+   (choixChange)="onChoixCouleurChange()" >
+       </app-simple-selector> <br/>
+couleurChoisie = {{couleurChoisie}}
+
+<hr/>
+<app-zz></app-zz>

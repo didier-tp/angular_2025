@@ -1,0 +1,6 @@
+<div class="my-actions-header">
+   <!-- <button id="EDIT_X" (click)="fireActionEvent($event)">EDIT_X</button> -->
+    @for(a of actionsList() ; track a){
+        <button [id]="a" (click)="fireActionEvent($event)">{{a}}</button> &nbsp;
+    }
+</div>

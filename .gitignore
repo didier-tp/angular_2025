@@ -8,6 +8,10 @@
 */.settings/**
 **/.settings/**
 
+**/*.class
+**/.settings/*
+>>>>>>> 2a1747cb4b83bad6a70f236478b17ed8e47e6b4d
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

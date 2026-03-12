@@ -1,0 +1,12 @@
+/* styles applied directly to the whole current component only (ex: app-login or app-welcome element) */
+:host {
+    //border: 2px solid blue;
+    display: block;
+    //padding: 1px;
+}
+
+/* styles applied directly to the PARENT/ANCESTOR of whole current component only (ex: <div> in app-component)
+  ---> assez rare */
+:host-context(div) {
+    background-color: white;
+}
